@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.cag.dxc.flight</groupId>
+    <artifactId>apigee-example</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>io.apigee.build-tools.enterprise4g</groupId>
+                    <artifactId>apigee-edge-maven-plugin</artifactId>
+                    <version>1.0.1</version>
+
+                    <executions>
+                        <execution>
+                            <id>configure-bundle</id>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>configure</goal>
+                            </goals>
+                        </execution>
+                        <execution>
+                            <id>deploy-bundle</id>
+                            <phase>install</phase>
+                            <goals>
+                                <goal>deploy</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+
+                <plugin>
+                    <groupId>io.apigee.build-tools.enterprise4g</groupId>
+                    <artifactId>proxy-dependency-maven-plugin</artifactId>
+                    <version>2.1.0</version>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>resolve</goal>
+                            </goals>
+                            <configuration>
+                                <proxySrcDir>${project.basedir}/</proxySrcDir>
+                                <proxyDestDir>${project.basedir}/target</proxyDestDir>
+                                <proxyRefs>
+                                    <proxyRef>${project.basedir}/../common</proxyRef>
+                                </proxyRefs>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+    <!-- This is where you add the environment specific properties under various profile names -->
+    <profiles>
+        <profile>
+            <id>test</id>
+            <properties>
+                <org>testmyapi</org>
+                <!-- default org, replace with default org to avoid passing parameter e.g. -Dorg testmyapi -->
+                <options>update</options>
+                <!-- default org, replace with default org to avoid passing parameter e.g. -Dorg testmyapi -->
+                <apigee.profile>test</apigee.profile>
+                <apigee.env>test</apigee.env>
+                <apigee.hosturl>https://api.enterprise.apigee.com</apigee.hosturl>
+                <apigee.apiversion>v1</apigee.apiversion>
+                <apigee.org>${org}</apigee.org>
+                <apigee.username>${username}</apigee.username>
+                <apigee.password>${password}</apigee.password>
+                <apigee.options>${options}</apigee.options>
+                <!--apigee.override.delay>10</apigee.override.delay-->
+                <!--apigee.delay>1000</apigee.delay-->
+            </properties>
+        </profile>
+        <profile>
+            <id>prod</id>
+            <properties>
+                <org>testmyapi</org>
+                <!-- default org, replace with default org to avoid passing parameter e.g. -Dorg testmyapi -->
+                <options>validate</options>
+                <!-- default org, replace with default org to avoid passing parameter e.g. -Dorg testmyapi -->
+                <apigee.profile>prod</apigee.profile>
+                <apigee.env>prod</apigee.env>
+                <apigee.hosturl>https://api.enterprise.apigee.com</apigee.hosturl>
+                <apigee.apiversion>v1</apigee.apiversion>
+                <apigee.org>${org}</apigee.org>
+                <apigee.username>${username}</apigee.username>
+                <apigee.password>${password}</apigee.password>
+                <apigee.options>${options}</apigee.options>
+                <!--apigee.override.delay>10</apigee.override.delay-->
+                <!--apigee.delay>1000</apigee.delay-->
+            </properties>
+        </profile>
+    </profiles>
+
+    <modules>
+        <module>flight-api-service</module>
+    </modules>
+
+</project>

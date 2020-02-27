@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="1" name="flight-V1">
+    <Basepaths>/flight-v1</Basepaths>
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1582778712001</CreatedAt>
+    <CreatedBy>rmaharaddi@dxc.com</CreatedBy>
+    <Description>flightService API documentation</Description>
+    <DisplayName>flight-V1</DisplayName>
+    <LastModifiedAt>1582778712001</LastModifiedAt>
+    <LastModifiedBy>rmaharaddi@dxc.com</LastModifiedBy>
+    <ManifestVersion>SHA-512:3068e08efc4e5ccf548dfaf5fa00d53bf7f72d889d193a6c2744bbd7501ad9129298930e4926f3ddeaedba8d660b2926bcfa11da9ff602e74b0d946276d70f67</ManifestVersion>
+    <Policies/>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources>
+        <Resource>openapi://association.json</Resource>
+    </Resources>
+    <Spec></Spec>
+    <TargetServers/>
+    <TargetEndpoints>
+        <TargetEndpoint>default</TargetEndpoint>
+    </TargetEndpoints>
+</APIProxy>
